@@ -4,10 +4,10 @@ open System.Collections.Generic
 open Redux.Types
 
 module Store =
-    
+
     type Store<'S, 'A>(initialReducer: Reducer<'S, 'A>, initialState: 'S) =
         let mutable reducer = initialReducer
-        let mutable state = initialState 
+        let mutable state = initialState
         let mutable subscribers = List<IStoreSubscriber<'S>>()
 
         interface IStore<'S, 'A> with
@@ -24,4 +24,4 @@ module Store =
                 reducer <- newReducer
 
     let createStore<'S, 'A> reducer initialState =
-        new Store<'S, 'A>(reducer, initialState)
+        (new Store<'S, 'A>(reducer, initialState) :> IStore<'S, 'A>)

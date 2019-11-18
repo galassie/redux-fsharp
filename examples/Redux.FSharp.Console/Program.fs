@@ -25,15 +25,17 @@ let main argv =
 
     let store = createStore incrementDecrementReducer { CurrentValue = 0 }
     let sub = ConsoleLogSubscriber()
-    let unsubscribe = (store :> IStore<State, Actions>).Subscribe(sub)
+    let unsubscribe = store.Subscribe(sub)
 
-    (store :> IStore<State, Actions>).Dispatch (Increment { Amount = 1 }) |> ignore
-    (store :> IStore<State, Actions>).Dispatch (Increment { Amount = 2 }) |> ignore
-    (store :> IStore<State, Actions>).Dispatch (Decrement { Amount = 1 }) |> ignore
+    store.Dispatch (Increment { Amount = 1 }) |> ignore
+    store.Dispatch (Increment { Amount = 2 }) |> ignore
+    store.Dispatch (Decrement { Amount = 1 }) |> ignore
 
     unsubscribe() |> ignore
 
-    let lastState = (store :> IStore<State, Actions>).GetState()
-    printfn "Expected CurrentValue should be 2"
+    store.Dispatch (Decrement { Amount = 1 }) |> ignore
+
+    let lastState = store.GetState()
+    printfn "Expected CurrentValue should be 1"
     printfn "Actual CurrentValue is %d" lastState.CurrentValue
     0 // return an integer exit code
