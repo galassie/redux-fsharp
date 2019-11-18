@@ -13,7 +13,9 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Redux.FSharp.Tests", "tests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{DE76C6D3-C8D8-4D54-92BD-89FCAA1CAEC4}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Redux.FSharp.Console", "examples\Redux.FSharp.Console\Redux.FSharp.Console.fsproj", "{F1D86C8A-F2F7-4F0B-A001-6345A6698928}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Redux.FSharp.SimpleStore", "examples\Redux.FSharp.SimpleStore\Redux.FSharp.SimpleStore.fsproj", "{F1D86C8A-F2F7-4F0B-A001-6345A6698928}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Redux.FSharp.CombineReducers", "examples\Redux.FSharp.CombineReducers\Redux.FSharp.CombineReducers.fsproj", "{11F49B9C-FA40-4795-B881-D1B0030EB663}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,10 +66,23 @@ Global
 		{F1D86C8A-F2F7-4F0B-A001-6345A6698928}.Release|x64.Build.0 = Release|Any CPU
 		{F1D86C8A-F2F7-4F0B-A001-6345A6698928}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1D86C8A-F2F7-4F0B-A001-6345A6698928}.Release|x86.Build.0 = Release|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Debug|x64.Build.0 = Debug|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Debug|x86.Build.0 = Debug|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Release|x64.ActiveCfg = Release|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Release|x64.Build.0 = Release|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Release|x86.ActiveCfg = Release|Any CPU
+		{11F49B9C-FA40-4795-B881-D1B0030EB663}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C0DF1572-F351-4340-B897-DF72FC6FADFA} = {1374EFB3-3149-4130-9C68-E95D67E6FA7B}
 		{9D04020D-DF39-4D00-828B-86DB794AB897} = {DCF971F2-6718-4B44-8B38-4E894B4B96BE}
 		{F1D86C8A-F2F7-4F0B-A001-6345A6698928} = {DE76C6D3-C8D8-4D54-92BD-89FCAA1CAEC4}
+		{11F49B9C-FA40-4795-B881-D1B0030EB663} = {DE76C6D3-C8D8-4D54-92BD-89FCAA1CAEC4}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,8 @@
 open Redux.Store
 open Redux.Types
 
+type State = { CurrentValue: int }
+
 type IncrementAction = { Amount: int }
 type DecrementAction = { Amount: int }
 
@@ -8,12 +10,10 @@ type Actions =
     | Increment of IncrementAction
     | Decrement of DecrementAction
 
-type State = { CurrentValue: int}
-
 let incrementDecrementReducer state action =
     match action with
-    | Increment { Amount = x } -> { state with CurrentValue = state.CurrentValue + x }
-    | Decrement { Amount = x } -> { state with CurrentValue = state.CurrentValue - x }
+    | Increment { Amount = amount } -> { state with CurrentValue = state.CurrentValue + amount }
+    | Decrement { Amount = amount } -> { state with CurrentValue = state.CurrentValue - amount }
 
 type ConsoleLogSubscriber() =
     interface IStoreSubscriber<State> with
@@ -36,6 +36,6 @@ let main argv =
     store.Dispatch (Decrement { Amount = 1 }) |> ignore
 
     let lastState = store.GetState()
-    printfn "Expected CurrentValue should be 1"
-    printfn "Actual CurrentValue is %d" lastState.CurrentValue
+    printfn "Expected Current value should be 1"
+    printfn "Actual Current value is %d" lastState.CurrentValue
     0 // return an integer exit code
