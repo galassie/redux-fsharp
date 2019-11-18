@@ -1,6 +1,4 @@
-namespace Redux
-
-open System.Collections.Generic
+﻿namespace Redux
 
 module Types =
 
