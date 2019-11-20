@@ -60,7 +60,6 @@ let StoreDispatchShouldNotifyAllSubscribers () =
     Assert.AreEqual(3, subscriberState1)
     Assert.AreEqual(3, subscriberState2)
 
-
 [<Test>]
 let StoreUnsubscribeShouldProperlyUnsubscribeSubscribers () =
     let mutable subscriberState1 = 0
@@ -97,3 +96,31 @@ let StoreUnsubscribeShouldProperlyUnsubscribeSubscribers () =
     Assert.IsTrue(resultUnsubscribe2)
     Assert.AreEqual(1, subscriberState1)
     Assert.AreEqual(2, subscriberState2)
+
+[<Test>]
+let StoreReplaceReducerShouldProperlyUpdateTheReducer () =
+    let mockReducer1 state action =
+        match action with
+        | "increment" -> state + 1
+        | "decrement" -> state - 1
+        | _ -> state
+    let mockReducer2 state action =
+        match action with
+        | "increment" -> state * 3
+        | "decrement" -> state - 2
+        | _ -> state
+    let initialState = 0
+
+    let store = createStore mockReducer1 initialState
+
+    store.Dispatch "increment" |> ignore
+    store.Dispatch "increment" |> ignore
+    store.Dispatch "increment" |> ignore
+    store.Dispatch "decrement" |> ignore
+
+    store.ReplaceReducer mockReducer2
+
+    store.Dispatch "increment" |> ignore
+    store.Dispatch "decrement" |> ignore
+
+    Assert.AreEqual(4, store.GetState())
