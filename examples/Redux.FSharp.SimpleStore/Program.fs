@@ -26,7 +26,7 @@ let main argv =
     let store = createStore incrementDecrementReducer { CurrentValue = 0 }
     let sub = ConsoleLogSubscriber()
     let unsubscribe = store.Subscribe(sub)
-
+    
     store.Dispatch (Increment { Amount = 1 }) |> ignore
     store.Dispatch (Increment { Amount = 2 }) |> ignore
     store.Dispatch (Decrement { Amount = 1 }) |> ignore
