@@ -17,9 +17,9 @@ module Store =
                 state <- reducer state action
                 for sub in subscribers do sub.OnNewState state
                 action
-            member this.Subscribe ss =
-                subscribers.Add(ss)
-                fun () -> subscribers.Remove(ss)
+            member this.Subscribe sub =
+                subscribers.Add(sub)
+                fun () -> subscribers.Remove(sub)
             member this.ReplaceReducer newReducer =
                 reducer <- newReducer
 

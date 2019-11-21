@@ -1,4 +1,4 @@
-module Redux.FSharp.Tests
+module Redux.FSharp.Tests.StoreTests
 
 open NUnit.Framework
 open Redux.Types

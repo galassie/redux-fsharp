@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Compile Include="StoreTests.fs" />
+    <Compile Include="CombineReducersTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
