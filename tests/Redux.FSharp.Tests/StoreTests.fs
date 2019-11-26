@@ -8,7 +8,7 @@ open Redux.Store
 let CreateStoreShouldNotReturnNull () =
     let mockReducer state action = action
     let initialState = 0
-    
+
     let store = createStore mockReducer initialState
 
     Assert.NotNull(store)
@@ -35,9 +35,11 @@ let StoreGetStateShouldReturnProperState () =
 let StoreDispatchShouldNotifyAllSubscribers () =
     let mutable subscriberState1 = 0
     let mutable subscriberState2 = 5
-    let subscriber1 = { new IStoreSubscriber<int> with member this.OnNewState state = subscriberState1 <- state }
-    let subscriber2 = { new IStoreSubscriber<int> with member this.OnNewState state = subscriberState2 <- state }
-    
+    let subscriber1 state =
+        subscriberState1 <- state
+    let subscriber2 state =
+        subscriberState2 <- state
+
     let mockReducer state action =
         match action with
         | "increment" -> state + 1
@@ -64,9 +66,11 @@ let StoreDispatchShouldNotifyAllSubscribers () =
 let StoreUnsubscribeShouldProperlyUnsubscribeSubscribers () =
     let mutable subscriberState1 = 0
     let mutable subscriberState2 = 5
-    let subscriber1 = { new IStoreSubscriber<int> with member this.OnNewState state = subscriberState1 <- state }
-    let subscriber2 = { new IStoreSubscriber<int> with member this.OnNewState state = subscriberState2 <- state }
-    
+    let subscriber1 state =
+        subscriberState1 <- state
+    let subscriber2 state =
+        subscriberState2 <- state
+
     let mockReducer state action =
         match action with
         | "increment" -> state + 1

@@ -8,11 +8,11 @@ module Types =
     type Unsubscribe =
         unit -> bool
 
-    type IStoreSubscriber<'S> =
-        abstract OnNewState : 'S -> unit
+    type Subscriber<'S> =
+        'S -> unit
 
     type IStore<'S, 'A> =
         abstract GetState : unit -> 'S
         abstract Dispatch : 'A -> 'A
-        abstract Subscribe : IStoreSubscriber<'S> -> Unsubscribe
+        abstract Subscribe : Subscriber<'S> -> Unsubscribe
         abstract ReplaceReducer : Reducer<'S, 'A> -> unit

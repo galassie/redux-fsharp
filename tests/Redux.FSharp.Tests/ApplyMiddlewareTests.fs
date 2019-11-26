@@ -14,10 +14,10 @@ let ApplyMiddlewareWithoutMiddlewaresShouldCallBasicStoreFunctions () =
     let mockStore =
         {
             new IStore<int, string> with
-                member __.GetState() = 
+                member __.GetState() =
                     isGetStateInvoked <- true
                     0
-                member __.Dispatch action = 
+                member __.Dispatch action =
                     isDispatchInvoked <- true
                     action
                 member __.Subscribe sub =
@@ -34,12 +34,7 @@ let ApplyMiddlewareWithoutMiddlewaresShouldCallBasicStoreFunctions () =
     storeEnhanced.Dispatch "test" |> ignore
     Assert.IsTrue(isDispatchInvoked)
 
-    let mockSubscriber =
-        { 
-            new IStoreSubscriber<int> with
-                member __.OnNewState state = ()
-        }
-    storeEnhanced.Subscribe(mockSubscriber) |> ignore
+    storeEnhanced.Subscribe(ignore) |> ignore
     Assert.IsTrue(isSubscribeInvoked)
 
     let mockReducer state action =
@@ -59,9 +54,9 @@ let ApplyMiddlewareWithMiddlewaresShouldInvokeDispatchInproperOrder () =
     let mockStore =
         {
             new IStore<string, string> with
-                member __.GetState() = 
+                member __.GetState() =
                     ""
-                member __.Dispatch action = 
+                member __.Dispatch action =
                     action + " -> store"
                 member __.Subscribe sub =
                     fun () -> true

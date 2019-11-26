@@ -2,7 +2,7 @@
 open Redux.Types
 open Redux.CombineReducers
 
-type State = { 
+type State = {
     CounterValue: int;
     NoteList: (int * string) list
 }
@@ -17,7 +17,7 @@ type Actions =
     | Add of AddNoteAction
     | Remove of RemoveNoteAction
     | Increment of IncrementCounterAction
-    | Decrement of DecrementCounterAction 
+    | Decrement of DecrementCounterAction
 
 let noteReducer state action =
     match action with
@@ -31,21 +31,18 @@ let counterReducer state action =
     | Decrement { Amount = amount } -> { state with CounterValue = state.CounterValue - amount }
     | _ -> state
 
-let mapNoteList noteList = 
+let mapNoteList noteList =
     (List.map (fun (_, note) -> note ) <| noteList)
 
-type ConsoleLogSubscriber() =
-    interface IStoreSubscriber<State> with
-        member this.OnNewState state =
-            printfn "Counter value: %d - Note list: %A" state.CounterValue (mapNoteList state.NoteList)
+let consoleLogSubscriber state =
+    printfn "Counter value: %d - Note list: %A" state.CounterValue (mapNoteList state.NoteList)
 
 [<EntryPoint>]
 let main argv =
 
     let reducer = combineReducers [| noteReducer; counterReducer |]
     let store = createStore reducer { CounterValue = 0; NoteList = [] }
-    let sub = ConsoleLogSubscriber()
-    let unsubscribe = store.Subscribe(sub)
+    let unsubscribe = store.Subscribe(consoleLogSubscriber)
 
     store.Dispatch (Increment { Amount = 5 }) |> ignore
     store.Dispatch (Add { Id = 1; Note = "Buy milk" }) |> ignore

@@ -8,19 +8,19 @@ module Store =
     type Store<'S, 'A>(initialReducer: Reducer<'S, 'A>, initialState: 'S) =
         let mutable reducer = initialReducer
         let mutable state = initialState
-        let mutable subscribers = List<IStoreSubscriber<'S>>()
+        let mutable subscriptions = List<Subscriber<'S>>()
 
         interface IStore<'S, 'A> with
-            member this.GetState() =
+            member __.GetState() =
                 state
-            member this.Dispatch action =
+            member __.Dispatch action =
                 state <- reducer state action
-                for sub in subscribers do sub.OnNewState state
+                for sub in subscriptions do sub state
                 action
-            member this.Subscribe sub =
-                subscribers.Add(sub)
-                fun () -> subscribers.Remove(sub)
-            member this.ReplaceReducer newReducer =
+            member __.Subscribe sub =
+                subscriptions.Add(sub)
+                fun () -> subscriptions.Remove(sub)
+            member __.ReplaceReducer newReducer =
                 reducer <- newReducer
 
     let createStore<'S, 'A> reducer initialState =
