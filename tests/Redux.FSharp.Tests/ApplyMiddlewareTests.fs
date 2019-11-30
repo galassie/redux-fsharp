@@ -67,3 +67,32 @@ let ApplyMiddlewareWithMiddlewaresShouldInvokeDispatchInproperOrder () =
     let resultCallSequence = storeEnhanced.Dispatch "test"
 
     Assert.AreEqual("test -> middleware n.1 -> middleware n.2 -> middleware n.3 -> store", resultCallSequence)
+
+
+[<Test>]
+let ApplyMiddlewareWithMiddlewaresDispatchTheStoreShouldSkipOtherMiddlewares () =
+    let createMockMiddleware index store next action =
+        let nextAction = action + sprintf " -> middleware n.%d" index
+        next(nextAction)
+    let mockMiddleware1 (store : IStore<string, string>) next action = 
+        let nextAction = action + " -> middleware skip to store"
+        store.Dispatch nextAction
+    let mockMiddleware2 = createMockMiddleware 2
+    let mockMiddleware3 = createMockMiddleware 3
+
+    let mockStore =
+        {
+            new IStore<string, string> with
+                member __.GetState() =
+                    ""
+                member __.Dispatch action =
+                    action + " -> store"
+                member __.Subscribe sub =
+                    fun () -> true
+                member __.ReplaceReducer newReducer = ()
+        }
+    let storeEnhanced = applyMiddleware [| mockMiddleware1; mockMiddleware2; mockMiddleware3 |] mockStore
+
+    let resultCallSequence = storeEnhanced.Dispatch "test"
+
+    Assert.AreEqual("test -> middleware skip to store -> store", resultCallSequence)
