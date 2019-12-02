@@ -1,5 +1,4 @@
 ﻿open Redux.Store
-open Redux.Types
 open Redux.CombineReducers
 
 type State = {
@@ -39,7 +38,6 @@ let consoleLogSubscriber state =
 
 [<EntryPoint>]
 let main argv =
-
     let reducer = combineReducers [| noteReducer; counterReducer |]
     let store = createStore reducer { CounterValue = 0; NoteList = [] }
     let unsubscribe = store.Subscribe(consoleLogSubscriber)

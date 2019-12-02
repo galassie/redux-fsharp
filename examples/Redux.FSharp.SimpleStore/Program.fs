@@ -1,5 +1,4 @@
 open Redux.Store
-open Redux.Types
 
 type State = { CurrentValue: int }
 
@@ -10,7 +9,7 @@ type Actions =
     | Increment of IncrementAction
     | Decrement of DecrementAction
 
-let incrementDecrementReducer state action =
+let reducer state action =
     match action with
     | Increment { Amount = amount } -> { state with CurrentValue = state.CurrentValue + amount }
     | Decrement { Amount = amount } -> { state with CurrentValue = state.CurrentValue - amount }
@@ -20,8 +19,7 @@ let consoleLogSubscriber state =
 
 [<EntryPoint>]
 let main argv =
-
-    let store = createStore incrementDecrementReducer { CurrentValue = 0 }
+    let store = createStore reducer { CurrentValue = 0 }
     let unsubscribe = store.Subscribe(consoleLogSubscriber)
 
     store.Dispatch (Increment { Amount = 1 }) |> ignore
