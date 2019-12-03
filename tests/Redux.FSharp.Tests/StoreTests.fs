@@ -1,7 +1,7 @@
 module Redux.FSharp.Tests.StoreTests
 
 open NUnit.Framework
-open Redux.Types
+open Redux.Enhancer
 open Redux.Store
 
 [<Test>]
@@ -9,7 +9,7 @@ let CreateStoreShouldNotReturnNull () =
     let mockReducer state action = action
     let initialState = 0
 
-    let store = createStore mockReducer initialState
+    let store = createStore mockReducer initialState IdStoreEnhancer
 
     Assert.NotNull(store)
 
@@ -22,7 +22,7 @@ let StoreGetStateShouldReturnProperState () =
         | _ -> state
     let initialState = 0
 
-    let store = createStore mockReducer initialState
+    let store = createStore mockReducer initialState IdStoreEnhancer
 
     store.Dispatch "increment" |> ignore
     store.Dispatch "decrement" |> ignore
@@ -47,7 +47,7 @@ let StoreDispatchShouldNotifyAllSubscribers () =
         | _ -> state
     let initialState = 0
 
-    let store = createStore mockReducer initialState
+    let store = createStore mockReducer initialState IdStoreEnhancer
 
     store.Dispatch "increment" |> ignore
     store.Dispatch "increment" |> ignore
@@ -78,7 +78,7 @@ let StoreUnsubscribeShouldProperlyUnsubscribeSubscribers () =
         | _ -> state
     let initialState = 0
 
-    let store = createStore mockReducer initialState
+    let store = createStore mockReducer initialState IdStoreEnhancer
 
     store.Dispatch "increment" |> ignore
     store.Dispatch "increment" |> ignore
@@ -115,7 +115,7 @@ let StoreReplaceReducerShouldProperlyUpdateTheReducer () =
         | _ -> state
     let initialState = 0
 
-    let store = createStore mockReducer1 initialState
+    let store = createStore mockReducer1 initialState IdStoreEnhancer
 
     store.Dispatch "increment" |> ignore
     store.Dispatch "increment" |> ignore

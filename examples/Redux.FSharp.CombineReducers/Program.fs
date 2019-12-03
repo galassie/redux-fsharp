@@ -1,5 +1,6 @@
-﻿open Redux.Store
+open Redux.Enhancer
 open Redux.CombineReducers
+open Redux.Store
 
 type State = {
     CounterValue: int;
@@ -39,7 +40,7 @@ let consoleLogSubscriber state =
 [<EntryPoint>]
 let main argv =
     let reducer = combineReducers [| noteReducer; counterReducer |]
-    let store = createStore reducer { CounterValue = 0; NoteList = [] }
+    let store = createStore reducer { CounterValue = 0; NoteList = [] } IdStoreEnhancer
     let unsubscribe = store.Subscribe(consoleLogSubscriber)
 
     store.Dispatch (Increment { Amount = 5 }) |> ignore

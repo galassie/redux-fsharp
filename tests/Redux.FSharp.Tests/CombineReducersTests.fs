@@ -1,8 +1,9 @@
 module Redux.FSharp.Tests.CombineReducersTests
 
 open NUnit.Framework
-open Redux.Store
+open Redux.Enhancer
 open Redux.CombineReducers
+open Redux.Store
 
 
 [<Test>]
@@ -33,7 +34,7 @@ let CombineReducersShouldCombineProperly () =
         reducer2
         reducer3
     |]
-    let store = createStore finalReducer initialState
+    let store = createStore finalReducer initialState IdStoreEnhancer
 
     store.Dispatch "incCount" |> ignore
     store.Dispatch "incCount" |> ignore

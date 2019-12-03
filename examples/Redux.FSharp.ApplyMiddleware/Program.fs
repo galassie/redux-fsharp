@@ -1,6 +1,7 @@
-﻿open Redux.Types
-open Redux.Store
+open Redux.Types
+open Redux.Enhancer
 open Redux.ApplyMiddleware
+open Redux.Store
 
 type State = { ToDoList: string list }
 
@@ -21,11 +22,10 @@ let logger (store : IStore<State, Actions>) next action =
 
 [<EntryPoint>]
 let main argv =
-    let store = createStore reducer { ToDoList = [] } 
-    let storeEnhanced = applyMiddleware [| logger |] store
+    let store = createStore reducer { ToDoList = [] } (applyMiddleware [| logger |])
 
-    storeEnhanced.Dispatch (AddNote { Note = "Learn F#" }) |> ignore
-    storeEnhanced.Dispatch (AddNote { Note = "Learn Redux" }) |> ignore
+    store.Dispatch (AddNote { Note = "Learn F#" }) |> ignore
+    store.Dispatch (AddNote { Note = "Learn Redux" }) |> ignore
 
-    printfn "Last state: %A" <| storeEnhanced.GetState()
+    printfn "Last state: %A" <| store.GetState()
     0 // return an integer exit code

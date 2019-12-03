@@ -2,10 +2,11 @@ namespace Redux
 
 open System.Collections.Generic
 open Redux.Types
+open Redux.Enhancer
 
 module Store =
 
-    type Store<'S, 'A>(initialReducer: Reducer<'S, 'A>, initialState: 'S) =
+    type Store<'S, 'A>(initialReducer : Reducer<'S, 'A>, initialState : 'S) =
         let mutable reducer = initialReducer
         let mutable state = initialState
         let mutable subscriptions = List<Subscriber<'S>>()
@@ -23,5 +24,5 @@ module Store =
             member __.ReplaceReducer newReducer =
                 reducer <- newReducer
 
-    let createStore<'S, 'A> reducer initialState =
-        (new Store<'S, 'A>(reducer, initialState) :> IStore<'S, 'A>)
+    let createStore<'S, 'A> (reducer : Reducer<'S, 'A>) (initialState : 'S) (enhancer : StoreEnhancer<'S, 'A>) =
+        enhancer <| new Store<'S, 'A>(reducer, initialState)

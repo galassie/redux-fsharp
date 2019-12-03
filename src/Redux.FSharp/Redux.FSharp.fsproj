@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Types.fs" />
+    <Compile Include="Enhancer.fs" />
     <Compile Include="CombineReducers.fs" />
     <Compile Include="ApplyMiddleware.fs" />
     <Compile Include="Store.fs" />
