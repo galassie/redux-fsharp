@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
-    <GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,7 +17,6 @@
     <Compile Include="StoreTests.fs" />
     <Compile Include="CombineReducersTests.fs" />
     <Compile Include="ApplyMiddlewareTests.fs" />
-    <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
