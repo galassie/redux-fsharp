@@ -44,7 +44,7 @@ Program:
 [<EntryPoint>]
 let main argv =
 
-    let store = createStore incrementDecrementReducer { CurrentValue = 0 }
+    let store = createStore incrementDecrementReducer { CurrentValue = 0 } id
     let unsubscribe = store.Subscribe(consoleLogSubscriber)
 
     store.Dispatch (Increment { Amount = 1 }) |> ignore
