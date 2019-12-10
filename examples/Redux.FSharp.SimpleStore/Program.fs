@@ -20,7 +20,7 @@ let consoleLogSubscriber state =
 
 [<EntryPoint>]
 let main argv =
-    let store = createStore reducer { CurrentValue = 0 } IdStoreEnhancer
+    let store = createStore reducer { CurrentValue = 0 } id
     let unsubscribe = store.Subscribe(consoleLogSubscriber)
 
     store.Dispatch (Increment { Amount = 1 }) |> ignore

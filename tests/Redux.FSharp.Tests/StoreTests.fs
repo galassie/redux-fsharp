@@ -9,7 +9,7 @@ let CreateStoreShouldNotReturnNull () =
     let mockReducer state action = action
     let initialState = 0
 
-    let store = createStore mockReducer initialState IdStoreEnhancer
+    let store = createStore mockReducer initialState id
 
     Assert.NotNull(store)
 
@@ -22,7 +22,7 @@ let StoreGetStateShouldReturnProperState () =
         | _ -> state
     let initialState = 0
 
-    let store = createStore mockReducer initialState IdStoreEnhancer
+    let store = createStore mockReducer initialState id
 
     store.Dispatch "increment" |> ignore
     store.Dispatch "decrement" |> ignore
@@ -47,7 +47,7 @@ let StoreDispatchShouldNotifyAllSubscribers () =
         | _ -> state
     let initialState = 0
 
-    let store = createStore mockReducer initialState IdStoreEnhancer
+    let store = createStore mockReducer initialState id
 
     store.Dispatch "increment" |> ignore
     store.Dispatch "increment" |> ignore
@@ -78,7 +78,7 @@ let StoreUnsubscribeShouldProperlyUnsubscribeSubscribers () =
         | _ -> state
     let initialState = 0
 
-    let store = createStore mockReducer initialState IdStoreEnhancer
+    let store = createStore mockReducer initialState id
 
     store.Dispatch "increment" |> ignore
     store.Dispatch "increment" |> ignore
@@ -115,7 +115,7 @@ let StoreReplaceReducerShouldProperlyUpdateTheReducer () =
         | _ -> state
     let initialState = 0
 
-    let store = createStore mockReducer1 initialState IdStoreEnhancer
+    let store = createStore mockReducer1 initialState id
 
     store.Dispatch "increment" |> ignore
     store.Dispatch "increment" |> ignore

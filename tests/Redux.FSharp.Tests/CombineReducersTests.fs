@@ -34,7 +34,7 @@ let CombineReducersShouldCombineProperly () =
         reducer2
         reducer3
     |]
-    let store = createStore finalReducer initialState IdStoreEnhancer
+    let store = createStore finalReducer initialState id
 
     store.Dispatch "incCount" |> ignore
     store.Dispatch "incCount" |> ignore

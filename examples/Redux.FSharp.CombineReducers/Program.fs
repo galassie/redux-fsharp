@@ -40,7 +40,7 @@ let consoleLogSubscriber state =
 [<EntryPoint>]
 let main argv =
     let reducer = combineReducers [| noteReducer; counterReducer |]
-    let store = createStore reducer { CounterValue = 0; NoteList = [] } IdStoreEnhancer
+    let store = createStore reducer { CounterValue = 0; NoteList = [] } id
     let unsubscribe = store.Subscribe(consoleLogSubscriber)
 
     store.Dispatch (Increment { Amount = 5 }) |> ignore
