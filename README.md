@@ -6,9 +6,7 @@ Predictable state container for F# applications.
 
 redux-fsharp is a [Redux](https://github.com/reduxjs/redux)-like implementation of the unidirectional data flow architecture in F#.
 
-## Example
-
-### Simple Store
+## Usage
 
 State:
 ``` fsharp
@@ -60,14 +58,11 @@ let main argv =
     0 // return an integer exit code
 ```
 
-Output:
-``` shell
-Current value: 1
-Current value: 3
-Current value: 2
-Expected Current value should be 1
-Actual Current value is 1
-```
+## Examples
+
+- [Simple Store](https://github.com/galassie/redux-fsharp/tree/master/examples/Redux.FSharp.SimpleStore)
+- [Combine Reducers](https://github.com/galassie/redux-fsharp/tree/master/examples/Redux.FSharp.CombineReducers)
+- [Apply Middleware](https://github.com/galassie/redux-fsharp/tree/master/examples/Redux.FSharp.ApplyMiddleware)
 
 ## Contributing
 
