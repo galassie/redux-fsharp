@@ -12,9 +12,8 @@ module ApplyMiddleware =
 
     let applyMiddleware<'S, 'A> (middlewares : Middleware<'S, 'A> array) (store : IStore<'S, 'A>) =
         let innerDispatch =
-            middlewares
-            |> Array.rev
-            |> Array.fold (fun nextDispatch middleware -> middleware store nextDispatch) store.Dispatch
+            (middlewares, store.Dispatch)
+            ||> Array.foldBack (fun middleware nextDispatch -> middleware store nextDispatch)
 
         {
             new IStore<'S, 'A> with
