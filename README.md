@@ -70,6 +70,13 @@ Expected Current value should be 1
 Actual Current value is 1
 ```
 
+## Contributing
+
+Code contributions are  more than welcome! 😻
+
+Please commit any pull requests against the `master` branch.  
+If you find any issue, please [report it](https://github.com/galassie/redux-fsharp/issues)!
+
 ## License
 
 This project is licensed under [The MIT License (MIT)](https://raw.githubusercontent.com/galassie/redux-fsharp/master/LICENSE.md).
