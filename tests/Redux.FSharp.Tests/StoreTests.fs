@@ -1,7 +1,6 @@
 module Redux.FSharp.Tests.StoreTests
 
 open NUnit.Framework
-open Redux.Enhancer
 open Redux.Store
 
 [<Test>]

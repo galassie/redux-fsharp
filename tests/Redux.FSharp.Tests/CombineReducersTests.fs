@@ -1,10 +1,8 @@
 module Redux.FSharp.Tests.CombineReducersTests
 
 open NUnit.Framework
-open Redux.Enhancer
 open Redux.CombineReducers
 open Redux.Store
-
 
 [<Test>]
 let CombineReducersShouldCombineProperly () =

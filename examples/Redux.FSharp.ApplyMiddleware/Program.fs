@@ -1,5 +1,4 @@
 open Redux.Types
-open Redux.Enhancer
 open Redux.ApplyMiddleware
 open Redux.Store
 

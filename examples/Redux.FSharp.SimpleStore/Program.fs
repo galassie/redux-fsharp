@@ -1,4 +1,3 @@
-open Redux.Enhancer
 open Redux.Store
 
 type State = { CurrentValue: int }

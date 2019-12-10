@@ -1,4 +1,3 @@
-open Redux.Enhancer
 open Redux.CombineReducers
 open Redux.Store
 
