@@ -1,11 +1,11 @@
-## Apply Middleware
+# Apply Middleware
 
-State:
+### State:
 ``` fsharp
 type State = { ToDoList: string list }  
 ```
 
-Actions:
+### Actions:
 ``` fsharp
 type AddNoteAction = { Note: string }
 
@@ -13,14 +13,14 @@ type Actions =
     | AddNote of AddNoteAction
 ```
 
-Reducers:
+### Reducers:
 ``` fsharp
 let reducer state action =
     match action with
     | AddNote { Note = note } -> { state with ToDoList = state.ToDoList@[note] }
 ```
 
-Middleware:
+### Middleware:
 ``` fsharp
 let logger (store : IStore<State, Actions>) next action =
     printfn "Will dispatch: %A" action
@@ -29,7 +29,7 @@ let logger (store : IStore<State, Actions>) next action =
     returnValue
 ```
 
-Program:
+### Program:
 ``` fsharp
 [<EntryPoint>]
 let main argv =
@@ -42,7 +42,7 @@ let main argv =
     0 // return an integer exit code
 ```
 
-Output:
+### Output:
 ``` shell
 Will dispatch: AddNote { Note = "Learn F#" }
 State after dispatch: { ToDoList = ["Learn F#"] }

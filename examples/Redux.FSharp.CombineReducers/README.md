@@ -1,6 +1,6 @@
-## Combine Reducers
+# Combine Reducers
 
-State:
+### State:
 ``` fsharp
 type State = {
     CounterValue: int;
@@ -8,7 +8,7 @@ type State = {
 }
 ```
 
-Actions:
+### Actions:
 ``` fsharp
 type AddNoteAction = { Id: int; Note: string }
 type RemoveNoteAction = { Id: int }
@@ -23,7 +23,7 @@ type Actions =
     | Decrement of DecrementCounterAction
 ```
 
-Reducers:
+### Reducers:
 ``` fsharp
 let noteReducer state action =
     match action with
@@ -38,7 +38,7 @@ let counterReducer state action =
     | _ -> state
 ```
 
-Subscriber:
+### Subscriber:
 ``` fsharp
 let mapNoteList = 
     List.map (fun (_, note) -> note)
@@ -47,7 +47,7 @@ let consoleLogSubscriber state =
     printfn "Counter value: %d - Note list: %A" state.CounterValue (mapNoteList state.NoteList)
 ```
 
-Program:
+### Program:
 ``` fsharp
 [<EntryPoint>]
 let main argv =
@@ -69,7 +69,7 @@ let main argv =
     0 // return an integer exit code
 ```
 
-Output:
+### Output:
 ``` shell
 Counter value: 5 - Note list: []
 Counter value: 5 - Note list: ["Buy milk"]

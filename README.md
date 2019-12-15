@@ -8,12 +8,12 @@ redux-fsharp is a [Redux](https://github.com/reduxjs/redux)-like implementation 
 
 ## Usage
 
-State:
+### State:
 ``` fsharp
 type State = { CurrentValue: int }
 ```
 
-Actions:
+### Actions:
 ``` fsharp
 type IncrementAction = { Amount: int }
 type DecrementAction = { Amount: int }
@@ -23,7 +23,7 @@ type Actions =
     | Decrement of DecrementAction
 ```
 
-Reducer:
+### Reducer:
 ``` fsharp
 let incrementDecrementReducer state action =
     match action with
@@ -31,13 +31,13 @@ let incrementDecrementReducer state action =
     | Decrement { Amount = amount } -> { state with CurrentValue = state.CurrentValue - amount }
 ```
 
-Subscriber:
+### Subscriber:
 ``` fsharp
 let consoleLogSubscriber state =
     printfn "Current value: %d" state.CurrentValue
 ```
 
-Program:
+### Program:
 ``` fsharp
 [<EntryPoint>]
 let main argv =
