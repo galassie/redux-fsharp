@@ -6,6 +6,39 @@ Predictable state container for F# applications.
 
 redux-fsharp is a [Redux](https://github.com/reduxjs/redux)-like implementation of the unidirectional data flow architecture in F#.
 
+## Build on your machine
+
+If you want to build this library on your machine, execute the following commands:
+
+``` shell
+git clone https://github.com/galassie/redux-fsharp.git
+cd redux-fsharp
+dotnet build
+```
+
+If you want to run the tests, execute the following command:
+
+``` shell
+dotnet test
+```
+
+## Build in Docker
+
+Required:
+- Install [Docker](https://hub.docker.com/search/?type=edition&offering=community) for your system
+
+Build a Docker image called `redux-fsharp`. This will work without any local .NET Core installation.
+
+```shell
+docker build -t redux-fsharp .
+```
+
+Use the following to instantiate a Docker container from the `redux-fsharp` image and run the tests inside:
+
+```shell
+docker run --rm redux-fsharp dotnet test
+```
+
 ## Usage
 
 ### State:
