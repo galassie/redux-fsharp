@@ -11,5 +11,5 @@ build_script:
   - dotnet pack   -c Release --no-build -o ./deploy
 
 artifacts:
-  - path: 'deploy\*.nupkg'
+  - path: 'deploy/*.nupkg'
     type: NuGetPackage

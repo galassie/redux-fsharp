@@ -26,8 +26,8 @@
 
 
   <ItemGroup>
-    <None Include="../../assets\redux-fsharp-200x200.png" Pack="true" PackagePath="\"/>
-    <None Include="../../README.md" Pack="true" PackagePath="\"/>
+    <None Include="../../assets\redux-fsharp-200x200.png" Pack="true" PackagePath="/"/>
+    <None Include="../../README.md" Pack="true" PackagePath="/"/>
   </ItemGroup>
 
   <ItemGroup>
