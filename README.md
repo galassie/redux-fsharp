@@ -1,6 +1,6 @@
 # redux-fsharp
 
-[![Build status](https://ci.appveyor.com/api/projects/status/89m308sqdtd2uyrk?svg=true)](https://ci.appveyor.com/project/galassie/redux-fsharp) [![Build Status](https://travis-ci.org/galassie/redux-fsharp.svg?branch=master)](https://travis-ci.org/galassie/redux-fsharp) [![NuGet](https://img.shields.io/nuget/v/redux-fsharp.svg)](https://nuget.org/packages/redux-fsharp)
+[![Build status](https://ci.appveyor.com/api/projects/status/89m308sqdtd2uyrk?svg=true)](https://ci.appveyor.com/project/galassie/redux-fsharp) [![NuGet](https://img.shields.io/nuget/v/redux-fsharp.svg)](https://nuget.org/packages/redux-fsharp)
 
 Predictable state container for F# applications.
 
