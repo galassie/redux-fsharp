@@ -8,19 +8,27 @@
   <PropertyGroup>
     <PackageId>redux-fsharp</PackageId>
 		<Title>redux-fsharp: predictable state container for F# apps</Title>
-    <Version>1.0.0-rc2</Version>
+    <Version>1.0.0</Version>
     <Description>redux-fsharp is a Redux-like implementation of the unidirectional data flow architecture in F#.</Description>
 		<Authors>Enrico Galassi</Authors>
 		<PackageLicenseUrl>https://raw.githubusercontent.com/galassie/redux-fsharp/master/LICENSE.md</PackageLicenseUrl>
-		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-		<NoPackageAnalysis>True</NoPackageAnalysis>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<NoPackageAnalysis>true</NoPackageAnalysis>
 		<PackageTags>redux;state;F#;fsharp;</PackageTags>
-    <!-- <PackageIconUrl>https://raw.githubusercontent.com/galassie/redux-fsharp/master/assets/redux-fsharp-200x200.png</PackageIconUrl> -->
+    <PackageIconUrl>https://raw.githubusercontent.com/galassie/redux-fsharp/master/assets/redux-fsharp-200x200.png</PackageIconUrl>
+    <PackageIcon>redux-fsharp-200x200.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/galassie/redux-fsharp</RepositoryUrl>
-		<IncludeSymbols>True</IncludeSymbols>
+		<IncludeSymbols>true</IncludeSymbols>
     <RepositoryType>git</RepositoryType>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+
+  <ItemGroup>
+    <None Include="assets\redux-fsharp-200x200.png" Pack="true" PackagePath="\"/>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Include="Types.fs" />
