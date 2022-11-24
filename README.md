@@ -6,6 +6,14 @@ Predictable state container for F# applications.
 
 redux-fsharp is a [Redux](https://github.com/reduxjs/redux)-like implementation of the unidirectional data flow architecture in F#.
 
+## Add package
+
+If you want to add this package to your project, execute the following command:
+
+``` shell
+dotnet add package redux-fsharp
+```
+
 ## Build on your machine
 
 If you want to build this library on your machine, execute the following commands:
